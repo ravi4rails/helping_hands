@@ -1,29 +1,52 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-md-auto">
+      <div class="card shadow mt-5 mb-5">
+        <div class="card-header bg-primary">
+          <h4 class="card-title text-center text-white">Sign Up</h4>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+            
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control form-control-lg' %>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.label 'Contact Number' %>
+              <%= f.text_field :contact_no, class: 'form-control form-control-lg' %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit "Sign Up", class: 'btn btn-lg btn-block btn-primary shadow' %>
+            </div>
+          <% end %>
+
+          <div class="links text-center">
+            <p>Already have an account? <%= link_to 'Login', new_user_session_path %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
