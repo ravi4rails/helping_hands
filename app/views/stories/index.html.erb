@@ -7,7 +7,11 @@
           <div class="card shadow border-0 mb-4">
             <div class="card-body">
               <h2><%= story.title %></h2>
-              <p><%= story.description %></p>
+              <% if story.description.length > 100 %>
+                <p><%= truncate(story.description, length: 100) %></p>
+              <% else %>
+                <p><%= story.description %></p>
+              <% end %>
               <h6>By <span class="text-primary"><%= story.user.name %></span></h6>
             </div>
           </div>
