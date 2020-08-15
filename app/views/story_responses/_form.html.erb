@@ -1,7 +1,7 @@
 <div class="card shadow mt-5">
   <div class="card-body">
     <p>Let <span class="font-weight-bold text-primary"><%= story.user.name %></span> know that you are ready to help. Write in the below textarea how you can help.</p>
-    <%= form_with(model: [story, story.story_responses.build], local: true, html: {remote: true}) do |f| %>
+    <%= form_for [story, story.story_responses.build], html: { remote: true } do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.text_area :body, class: "form-control form-control-lg", rows: "5" %>  
       <%= f.submit 'Submit', class: 'btn btn-primary btn-lg mt-3' %>
