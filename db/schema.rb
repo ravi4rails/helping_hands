@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_180535) do
+ActiveRecord::Schema.define(version: 2020_08_15_180147) do
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2020_08_13_180535) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_stories_on_user_id"
+  end
+
+  create_table "story_responses", force: :cascade do |t|
+    t.text "body"
+    t.integer "story_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["story_id"], name: "index_story_responses_on_story_id"
+    t.index ["user_id"], name: "index_story_responses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +46,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_180535) do
   end
 
   add_foreign_key "stories", "users"
+  add_foreign_key "story_responses", "stories"
+  add_foreign_key "story_responses", "users"
 end
