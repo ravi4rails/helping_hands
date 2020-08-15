@@ -1,0 +1,6 @@
+<% if @story_response.errors.present? %>
+  console.log("sdsdh")
+  $("#response_error_area").html("<%= escape_javascript render('errors', story_response: @story_response) %>");
+<% else %>
+  $("#response_error_area").html("No Error");
+<% end %>

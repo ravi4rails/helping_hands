@@ -6,6 +6,6 @@ class StoryResponse < ApplicationRecord
 
   def check_for_same_user
     same_id = user_id == story.user_id
-    errors.add('', 'User can not respond to own story') if same_id
+    errors.add(:user, 'can not respond to own story') if same_id
   end
 end
