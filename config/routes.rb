@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :stories
+  resources :stories do
+    resources :story_responses
+  end
   root 'home#index'
 
   devise_for :users, controllers: {

@@ -14,13 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="card shadow mt-5">
-        <div class="card-body">
-          <p>Let <span class="font-weight-bold text-primary"><%= @story.user.name %></span> know that you are ready to help. Write in the below textarea how you can help.</p>
-          <textarea rows='5' class="form-control form-control-lg"></textarea>
-          <button type="button" class="btn btn-primary btn-lg mt-3">Submit</button>
-        </div>
-      </div>
+      <%= render 'story_responses/form', story: @story %>
     </div>
     <div class="col-md-3">
     </div>
