@@ -2,9 +2,19 @@
   <div class="card-body">
     <% if story.story_responses.present? %>
       <ul class="list-unstyled" id="response-listing">
-        <% User.joins(:story_responses).uniq.reverse.each do |user| %>
-          <% responses = user.story_responses.where(story_id: @story.id) %>
-          <%= render 'story_responses/response_with_count', responses: responses, user: user %>
+        <% story.story_responses.group(:user_id).each do |story_response| %>
+          <li class="media" id="user_response_<%= story_response.user.id %>">
+            <%= image_tag 'user.jpg', class: 'mr-3 mb-2', width: '40' %>
+            <div class="media-body">
+              <p>
+                <span><%= story_response.body %></span> 
+                <span class="font-weight-bold text-primary"><%= story_response.user.name %></span>
+                <button type="button" class="btn btn-primary btn-sm">
+                  Comments <span class="badge badge-light"><%= show_response_count(story_response) %></span>
+                </button>
+              </p>
+            </div>
+          </li>
         <% end %>
       </ul>
     <% end %>
