@@ -3,7 +3,7 @@ class StoryResponsesController < ApplicationController
   def create
     @story_response = set_story.story_responses.create(responses_params)
     respond_to do |format|
-      format.js
+      format.html { redirect_to set_story, notice: 'Thank you for your response' }
     end
   end
 
