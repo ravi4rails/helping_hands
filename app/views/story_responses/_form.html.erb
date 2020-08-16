@@ -21,7 +21,7 @@
     <p>Let <span class="font-weight-bold text-primary"><%= story.user.name %></span> know that you are ready to help. Write in the below textarea how you can help.</p>
     <%= form_for [story, story.story_responses.build] do |f| %>
       <div id="response_error_area"></div>
-      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :user_id, value: current_user.id if user_signed_in? %>
       <%= f.text_area :body, class: "form-control form-control-lg", rows: "5", required: true %>  
       <%= f.submit 'Submit', class: 'btn btn-primary btn-lg mt-3' %>
     <% end %>

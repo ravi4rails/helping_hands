@@ -1,4 +1,5 @@
 class StoryResponsesController < ApplicationController
+  before_action :authenticate_user!, only: %i[create]
   before_action :set_story
   def create
     @story_response = set_story.story_responses.create(responses_params)
