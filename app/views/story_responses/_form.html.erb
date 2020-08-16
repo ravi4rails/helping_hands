@@ -2,8 +2,9 @@
   <div class="card-body">
     <% if story.story_responses.present? %>
       <ul class="list-unstyled" id="response-listing">
-        <% story.story_responses.each do |story_response| %>
-          <%= render 'story_responses/story_response', story_response: story_response %>
+        <% User.joins(:story_responses).uniq.reverse.each do |user| %>
+          <% responses = user.story_responses.where(story_id: @story.id) %>
+          <%= render 'story_responses/response_with_count', responses: responses, user: user %>
         <% end %>
       </ul>
     <% end %>

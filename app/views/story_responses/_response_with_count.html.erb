@@ -1,0 +1,12 @@
+<li class="media">
+  <%= image_tag 'user.jpg', class: 'mr-3 mb-2', width: '40' %>
+  <div class="media-body">
+    <p>
+      <span><%= responses.first.body %></span> 
+      <span class="font-weight-bold text-primary"><%= user.name %></span>
+      <button type="button" class="btn btn-primary btn-sm">
+        Comments <span class="badge badge-light"><%= responses.size %></span>
+      </button>
+    </p>
+  </div>
+</li>
