@@ -5,3 +5,25 @@
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <%= link_to 'Learn More', learnmore_path, class: 'btn btn-primary btn-lg', role: 'button' %>
 </div>
+
+<% if @stories.present? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 mx-md-auto">
+        <div class="card shadow">
+          <div class="card-header">
+            <h4>Top Stories</h4>
+          </div>
+          <div class="card-body">
+            <% @stories.each do |story| %>
+              <%= link_to story, class: 'story-link' do %>
+                <h5><%= story.title %></h5>
+              <% end %>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
