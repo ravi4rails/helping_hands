@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-9">
+    <div class="col-md-7">
       <div class="card shadow">
         <div class="card-header">
           <h2><%= @story.title %></h2>
@@ -14,9 +14,9 @@
           </div>
         </div>
       </div>
-      <%= render 'story_responses/form', story: @story %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-5">
+      <%= render 'story_responses/form', story: @story %>
     </div>
   </div>
 </div>
